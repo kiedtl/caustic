@@ -1,6 +1,8 @@
 ## Caustic Linux
 
-> How much space is needed for a minimal, usable Linux distribution?
+> How much space is needed for a minimal but usable Linux distribution?
+
+(I guess it all depends on how you define usable.)
 
 ### Status
 
