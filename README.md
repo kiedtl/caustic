@@ -6,12 +6,12 @@
 
 ### Status
 
-Highly experimental and still in planning phase.
+Highly experimental.
 
 Please note that this Linux distro is extremely caustic, and may cause brain
 damage if used without proper equipment and expertise.
 
-- [ ] planning phase
+- [x] planning phase
 - [ ] working `chroot`
 	- [ ] `musl`
 	- [ ] shell
