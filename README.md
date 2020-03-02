@@ -25,7 +25,7 @@ damage if used without proper equipment and expertise.
 
 ### Components
 
-We will be trying to fit the following components into as little space as
+This project aims to fit the following components into as little space as
 possible:
 
 - init system
