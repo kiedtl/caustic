@@ -3,3 +3,6 @@
 
 # ignore source downloads
 **/*.tar.gz
+
+# ignore chroot directory
+root/
