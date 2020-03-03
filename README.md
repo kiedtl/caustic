@@ -13,9 +13,9 @@ damage if used without proper equipment and expertise.
 
 - [x] planning phase
 - [ ] working `chroot`
-	- [ ] `musl` (IN PROGRESS)
-	- [ ] shell  (IN PROGRESS)
-	- [ ] coreutils
+	- [ ] libc (`musl`)
+	- [ ] shell (busybox `ash`)
+	- [ ] coreutils (busybox)
 	- [ ] fetch script
 	- [ ] core filesystem
 		- e.g. `/etc/passwd`, `/etc/os-release`, `/etc/motd`, etc
