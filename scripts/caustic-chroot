@@ -3,9 +3,44 @@
 # (c) Kiëd Llaentenn <kiedtl@protonmail.com>
 # See the LICENSE for copyright information.
 
-# usage: caustic-chroot [shell]
-# default shell is /bin/sh.
+log() {
+    printf "\033[32m->\033[m ${1}\n"
+}
 
-# TODO: mount /proc and /sys
+die() {
+    log "$1" >&2
+    exit 1
+}
 
-chroot root /bin/sh
+cleanup() {
+    log 'unmounting /dev, /proc, and /sys'
+
+    umount "$1/dev"  ||:
+    umount "$1/proc" ||:
+    umount "$1/sys"  ||:
+
+    log "removing $1/root/.ash_history"
+    rm -f "$1/root/.ash_history"
+}
+
+[ -d "$1" ]        || die "error: '$1': invalid path."
+[ "$(id -u)" = 0 ] || die "error: this script must be run as root."
+
+trap 'cleanup "$1"' EXIT INT
+
+log "mounting /dev, /proc, and /sys"
+[ -d "$1/dev" ]         || mkdir -p "$1/dev"
+[ -d "$1/proc" ]        || mkdir -p "$1/proc"
+[ -d "$1/sys" ]         || mkdir -p "$1/sys"
+mountpoint -q "$1/dev"  || mount -o bind /dev "$1/dev"
+mountpoint -q "$1/proc" || mount -t proc proc "$1/proc"
+mountpoint -q "$1/sys"  || mount -t sysfs sys "$1/sys"
+
+[ -f /etc/resolv.conf ] && {
+    log 'copying /etc/resolv.conf from host';
+    [ -f "$1/etc/resolv.conf" ] && rm -f "$1/etc/resolv.conf";
+    cp /etc/resolv.conf "$1/etc/resolv.conf";
+}
+
+log 'entering chroot'
+chroot "$1" /bin/sh || die 'error: chroot failed.'
