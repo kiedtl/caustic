@@ -16,12 +16,21 @@ damage if used without proper equipment and expertise.
 	- [ ] libc (`musl`)
 	- [ ] shell (busybox `ash`)
 	- [ ] coreutils (busybox)
-	- [ ] fetch script
+	- [x] fetch script
 	- [ ] core filesystem
-		- e.g. `/etc/passwd`, `/etc/os-release`, `/etc/motd`, etc
+		- [ ] `/etc/passwd`
+		- [ ] `/etc/motd`
+		- [ ] `/etc/os-release`
+		- [ ] `/etc/fstab`
+		- [ ] `/etc/group`
+		- [ ] `/etc/hosts`
+		- [ ] `/etc/issue`
+		- [ ] `/etc/profile`
+		- [ ] `/etc/shells`
 - [ ] working boot (*on `x86_64`*)
 	- [ ] kernel
 	- [ ] init system
+- [ ] editor
 
 ### Components
 
