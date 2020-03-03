@@ -15,8 +15,8 @@ damage if used without proper equipment and expertise.
 - [ ] get a working system first.
 	- [x] working `chroot`
 		- [x] libc (`musl`)
-		- [ ] shell (`mrsh`)
-		- [ ] coreutils (sbase + ubase)
+		- [x] shell (`mrsh`)
+		- [x] coreutils (sbase + ubase)
 		- [x] fetch script
 		- [x] core filesystem
 	- [ ] working boot (*on `x86_64`*)
