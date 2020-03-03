@@ -15,7 +15,7 @@ damage if used without proper equipment and expertise.
 - [ ] get a working system first.
 	- [x] working `chroot`
 		- [x] libc (`musl`)
-		- [ ] shell (`dash`)
+		- [ ] shell (`mrsh`)
 		- [ ] coreutils (sbase + ubase)
 		- [x] fetch script
 		- [x] core filesystem
@@ -36,7 +36,7 @@ possible:
 	- <s>[hummingbird](https://github.com/Sweets/hummingbird), or</s>
 	- <s>`systemd`. After all, it's only 16MB, and it has service supervision, and...</s>
 - a shell
-	- **dash**
+	- **mrsh**
 	- <s>the `ash` shell.</s>
 	- <s>why not a custom shell.</s>
 - `musl` libc
