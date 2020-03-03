@@ -1,1 +1,5 @@
+# ignore build directories
 **/*-src/
+
+# ignore source downloads
+**/*.tar.gz
