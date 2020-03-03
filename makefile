@@ -1,8 +1,11 @@
 MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
 BUSYBOX_URL	= https://www.busybox.net/downloads/busybox-1.31.1.tar.bz2
 
-all: build/busybox/busybox-src/BUSYBOX_BUILD.tar \
-	build/musl/musl-src/MUSL_BUILD.tar
+all: build
+
+build: build/busybox/busybox-src/BUSYBOX_BUILD.tar \
+	build/musl/musl-src/MUSL_BUILD.tar \
+	build/sysinfo/sysinfo
 
 
 build/busybox/busybox-src/BUSYBOX_BUILD.tar: build/busybox/.config
@@ -36,4 +39,4 @@ clean:
 	rm -rf build/busybox/busybox-src
 	rm -rf build/musl/musl-src
 
-.PHONY: all clean
+.PHONY: all build clean
