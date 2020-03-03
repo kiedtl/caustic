@@ -13,7 +13,7 @@ damage if used without proper equipment and expertise.
 
 - [x] planning phase
 - [ ] get a working system first.
-	- [ ] working `chroot`
+	- [x] working `chroot`
 		- [x] libc (`musl`)
 		- [x] shell (busybox `ash`)
 		- [x] coreutils (busybox)
