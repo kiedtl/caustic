@@ -18,6 +18,7 @@ root: build
 		tar xvf ../build/musl/musl-src/MUSL_BUILD.tar && \
 		tar xvf ../build/sbase/sbase-src/SBASE_BUILD.tar && \
 		tar xvf ../build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
+		tar xvf ../build/ubase/ubase-src/UBASE_BUILD.tar && \
 		cp -r COREFS_BUILD/* . && rm -rf COREFS_BUILD && \
 		cp -r MUSL_BUILD/* . && rm -rf MUSL_BUILD && \
 		cp -r SBASE_BUILD/* . && rm -rf SBASE_BUILD && \
@@ -28,7 +29,7 @@ build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/musl/musl-src/MUSL_BUILD.tar \
 	build/sbase/sbase-src/SBASE_BUILD.tar \
 	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar \
-	build/ubase/ubase-src/UBASE_BUILD.tar \
+	build/ubase/ubase-src/UBASE_BUILD.tar
 
 build/corefs/corefs-src/COREFS_BUILD.tar:
 	cd build/corefs && \
