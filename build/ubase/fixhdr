@@ -6,7 +6,5 @@
 
 # MUST BE RUN INSIDE ubase-src
 
-for file in $(find -name "*.c")
-do
-    sed -i "$file" -e 's/sys\/type.h/sys\/sysmacros.h/g'
-done
+find . -type f -name "*c" -print0 | \
+    xargs -0 sed -i 's/sys\/types.h/sys\/sysmacros.h/g'
