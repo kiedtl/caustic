@@ -12,25 +12,18 @@ Please note that this Linux distro is slightly corrosive, and may cause some
 damage if used without proper equipment and expertise.
 
 - [x] planning phase
-- [ ] working `chroot`
-	- [ ] libc (`musl`)
-	- [ ] shell (busybox `ash`)
-	- [ ] coreutils (busybox)
-	- [x] fetch script
-	- [ ] core filesystem
-		- [ ] `/etc/passwd`
-		- [ ] `/etc/motd`
-		- [ ] `/etc/os-release`
-		- [ ] `/etc/fstab`
-		- [ ] `/etc/group`
-		- [ ] `/etc/hosts`
-		- [ ] `/etc/issue`
-		- [ ] `/etc/profile`
-		- [ ] `/etc/shells`
-- [ ] working boot (*on `x86_64`*)
-	- [ ] kernel
-	- [ ] init system
-- [ ] editor
+- [ ] get a working system first.
+	- [ ] working `chroot`
+		- [x] libc (`musl`)
+		- [x] shell (busybox `ash`)
+		- [x] coreutils (busybox)
+		- [x] fetch script
+		- [x] core filesystem
+	- [ ] working boot (*on `x86_64`*)
+		- [ ] kernel
+		- [ ] init system
+	- [ ] editor
+- [ ] minification
 
 ### Components
 
