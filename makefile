@@ -26,9 +26,9 @@ root: build
 
 build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/musl/musl-src/MUSL_BUILD.tar \
-	build/sbase/sbase-src/SBASE_BUILD.tar
-	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar
-	build/ubase/ubase-src/UBASE_BUILD.tar
+	build/sbase/sbase-src/SBASE_BUILD.tar \
+	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar \
+	build/ubase/ubase-src/UBASE_BUILD.tar \
 
 build/corefs/corefs-src/COREFS_BUILD.tar:
 	cd build/corefs && \
@@ -78,6 +78,7 @@ build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk
 		cd ubase-src && \
 		cp -f ../config.mk . && \
 		mkdir -p UBASE_BUILD && \
+		../fixhdr && \
 		make DESTDIR=UBASE_BUILD ubase-box-install && \
 		tar -cf UBASE_BUILD.tar UBASE_BUILD
 

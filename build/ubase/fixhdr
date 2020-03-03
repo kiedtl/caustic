@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# fixhdr: fix header includes in ubase
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the LICENSE for copyright information.
+
+# MUST BE RUN INSIDE ubase-src
+
+for file in $(find -name "*.c")
+do
+    sed -i "$file" -e 's/sys\/type.h/sys\/sysmacros.h/g'
+done
