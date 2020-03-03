@@ -1,11 +1,23 @@
-MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
 BUSYBOX_URL	= https://www.busybox.net/downloads/busybox-1.31.1.tar.bz2
+COREFS_URL	= https://github.com/kiedtl/caustic-corefs/archive/0.1.0.tar.gz
+MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
 
 all: build
 
-build: build/busybox/busybox-src/BUSYBOX_BUILD.tar \
+build:  build/corefs/corefs-src/COREFS_BUILD.tar \
+	build/busybox/busybox-src/BUSYBOX_BUILD.tar \
 	build/musl/musl-src/MUSL_BUILD.tar \
 	build/sysinfo/sysinfo
+
+build/corefs/corefs-src/COREFS_BUILD.tar:
+	cd build/corefs && \
+		wget $(COREFS_URL) -O corefs.tar.gz && \
+		tar -xf corefs.tar.gz && \
+		mv caustic-corefs-0.1.0 corefs-src && \
+		cd corefs-src && \
+		mkdir -p COREFS_BUILD && \
+		make DESTDIR=COREFS_BUILD install && \
+		tar -cf COREFS_BUILD.tar COREFS_BUILD
 
 
 build/busybox/busybox-src/BUSYBOX_BUILD.tar: build/busybox/.config
@@ -15,7 +27,7 @@ build/busybox/busybox-src/BUSYBOX_BUILD.tar: build/busybox/.config
 		mv busybox-1.31.1 busybox-src && \
 		cd busybox-src && \
 		cp ../.config . && \
-		mkdir BUSYBOX_BUILD && \
+		mkdir -p BUSYBOX_BUILD && \
 		make && \
 		make install && \
 		tar -cf BUSYBOX_BUILD.tar BUSYBOX_BUILD
@@ -27,7 +39,7 @@ build/musl/musl-src/MUSL_BUILD.tar:
 		tar -xf musl.tar.gz && \
 		mv musl-1.2.0 musl-src && \
 		cd musl-src && \
-		mkdir MUSL_BUILD && \
+		mkdir -p MUSL_BUILD && \
 		./configure --prefix /usr --syslibdir /usr/lib && \
 		make && \
 		make DESTDIR=MUSL_BUILD install && \
@@ -37,6 +49,7 @@ build/musl/musl-src/MUSL_BUILD.tar:
 clean:
 	# TODO: remote *.tar.gz
 	rm -rf build/busybox/busybox-src
+	rm -rf build/corefs/corefs-src
 	rm -rf build/musl/musl-src
 
 .PHONY: all build clean
