@@ -21,17 +21,17 @@ build/busybox/busybox-src/BUSYBOX_BUILD.tar: build/busybox/.config
 		tar -cf BUSYBOX_BUILD.tar BUSYBOX_BUILD
 
 
-build/musl/musl-src/MUSL_BUILD.tar: build/musl/config.mak
+build/musl/musl-src/MUSL_BUILD.tar:
 	cd build/musl && \
 		wget $(MUSL_URL) -O musl.tar.gz && \
 		tar -xf musl.tar.gz && \
 		mv musl-1.2.0 musl-src && \
 		cd musl-src && \
-		cp ../config.mak . && \
 		mkdir MUSL_BUILD && \
-		./configure && \
+		./configure --prefix /usr --syslibdir /usr/lib && \
 		make && \
-		make install && \
+		make DESTDIR=MUSL_BUILD install && \
+		mkdir -p MUSL_BUILD/usr/bin \
 		tar -cf MUSL_BUILD.tar MUSL_BUILD
 
 clean:
