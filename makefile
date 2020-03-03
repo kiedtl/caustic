@@ -3,7 +3,24 @@ COREFS_URL	= https://github.com/kiedtl/caustic-corefs/archive/0.1.0.tar.gz
 MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
 SYSINFO_URL	= https://github.com/kiedtl/caustic-sysinfo/archive/0.1.0.tar.gz
 
-all: build
+all: options
+
+options:
+	@echo Run \`make root\` to build the core packages and create the
+	@echo root directories, which you can then chroot into.
+
+root: build
+	rm -rf root && \
+		mkdir root && \
+		cd root && \
+		tar xvf ../build/corefs/corefs-src/COREFS_BUILD.tar && \
+		tar xvf ../build/busybox/busybox-src/BUSYBOX_BUILD.tar && \
+		tar xvf ../build/musl/musl-src/MUSL_BUILD.tar && \
+		tar xvf ../build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
+		cp -r COREFS_BUILD/* . && rm -rf COREFS_BUILD && \
+		cp -r BUSYBOX_BUILD/* . && rm -rf BUSYBOX_BUILD && \
+		cp -r MUSL_BUILD/* . && rm -rf MUSL_BUILD && \
+		cp -r SYSINFO_BUILD/* . && rm -rf SYSINFO_BUILD
 
 build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/busybox/busybox-src/BUSYBOX_BUILD.tar \
