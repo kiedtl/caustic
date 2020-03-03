@@ -1,6 +1,6 @@
 ## Caustic Linux
 
-> How much space is needed for a minimal but usable Linux distribution?
+> How much space is needed for a minimal (*but usable*) Linux distribution?
 
 (I guess it all depends on how you define usable.)
 
@@ -8,7 +8,7 @@
 
 Highly experimental.
 
-Please note that this Linux distro is slightly corrosive, and may cause some
+Please note that this Linux distro is slightly corrosive, and may cause
 damage if used without proper equipment and expertise.
 
 - [x] planning phase
@@ -36,26 +36,25 @@ possible:
 	- <s>`systemd`. After all, it's only 16MB, and it has service supervision, and...</s>
 - a shell
 	- <s>dash, maybe</s>
-	- the `ash` shell. We're using busybox anyway...
+	- **the `ash` shell. We're using busybox anyway.**
 	- <s>why not a custom shell.</s>
 - `musl` libc
 - basic set of coreutils with `util-linux`
-	- stripped down busybox.
+	- **stripped down busybox.**
 	- <s>bareutils (would require bash as shell...)</s>
 - an editor
 	- either `vi` or `nano`
 	- a custom editor (forked from [dcat/she](https://github.com/dcat/she)(?))
 	- oh wait, ed is the standard text editor. never mind.
 - tiny fetch script
-	- either a slightly modified version of
-	[golfetch](https://github.com/dylanaraps/golfetch), or
+	- **a slightly modified version of
+	[golfetch](https://github.com/dylanaraps/golfetch)
+	(see: [caustic-sysinfo](https://github.com/kiedtl/caustic-sysinfo))**
 	- <s>a custom fetch script.</s>
 - kernel
 - nothing else.
 	- no service supervisor.
-	- no windowing system.
+	- no windowing system. (X11, Wayland, whatever)
 	- no package manager/package system (as of now anyway...)
-		- **small** chance it might be added later.
-	- no web browser.
 	- no unicorns or rainbows.
 	- etc etc etc
