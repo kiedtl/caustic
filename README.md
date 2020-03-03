@@ -49,6 +49,7 @@ possible:
 	- <s> a custom editor</s>
 	- <s>oh wait, ed is the standard text editor. never mind.</s>
 - `man`
+	- includes the manual pages for sbase and ubase.
 - tiny fetch script
 	- **a slightly modified version of
 	[golfetch](https://github.com/dylanaraps/golfetch)
@@ -61,3 +62,8 @@ possible:
 	- no package manager/package system (as of now anyway...)
 	- no unicorns or rainbows.
 	- etc etc etc
+
+### FAQ
+
+- **Q**: Why are the manpages included for sbase/ubase? Won't that increase the size significantly?
+	- **A**: 1) sbase and ubase have horrible `--help` messages, so the manpage is a must. 2) manpages are included in my definition of "usable".
