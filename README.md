@@ -16,7 +16,7 @@ damage if used without proper equipment and expertise.
 	- [x] working `chroot`
 		- [x] libc (`musl`)
 		- [ ] shell (`dash`)
-		- [ ] coreutils (sbase)
+		- [ ] coreutils (sbase + ubase)
 		- [x] fetch script
 		- [x] core filesystem
 	- [ ] working boot (*on `x86_64`*)
@@ -43,7 +43,7 @@ possible:
 - basic set of coreutils with `util-linux`
 	- <s>stripped down busybox.</s>
 	- <s>bareutils (would require bash as shell...)</s>
-	- **sbase**
+	- **sbase** + ubase
 - an editor
 	- **`vi`**
 	- <s> a custom editor</s>
