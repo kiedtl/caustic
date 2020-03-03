@@ -8,12 +8,12 @@
 
 Highly experimental.
 
-Please note that this Linux distro is extremely caustic, and may cause brain
+Please note that this Linux distro is slightly corrosive, and may cause some
 damage if used without proper equipment and expertise.
 
 - [x] planning phase
 - [ ] working `chroot`
-	- [ ] `musl`
+	- [ ] `musl` (IN PROGRESS)
 	- [ ] shell
 	- [ ] coreutils
 	- [ ] fetch script
