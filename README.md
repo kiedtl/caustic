@@ -15,14 +15,15 @@ damage if used without proper equipment and expertise.
 - [ ] get a working system first.
 	- [x] working `chroot`
 		- [x] libc (`musl`)
-		- [x] shell (busybox `ash`)
-		- [x] coreutils (busybox)
+		- [ ] shell (`dash`)
+		- [ ] coreutils (sbase)
 		- [x] fetch script
 		- [x] core filesystem
 	- [ ] working boot (*on `x86_64`*)
 		- [ ] kernel
 		- [ ] init system
 	- [ ] editor
+	- [ ] `man`
 - [ ] minification
 
 ### Components
@@ -35,17 +36,19 @@ possible:
 	- <s>[hummingbird](https://github.com/Sweets/hummingbird), or</s>
 	- <s>`systemd`. After all, it's only 16MB, and it has service supervision, and...</s>
 - a shell
-	- <s>dash, maybe</s>
-	- **the `ash` shell. We're using busybox anyway.**
+	- **dash**
+	- <s>the `ash` shell.</s>
 	- <s>why not a custom shell.</s>
 - `musl` libc
 - basic set of coreutils with `util-linux`
-	- **stripped down busybox.**
+	- <s>stripped down busybox.</s>
 	- <s>bareutils (would require bash as shell...)</s>
+	- **sbase**
 - an editor
-	- either `vi` or `nano`
-	- a custom editor (forked from [dcat/she](https://github.com/dcat/she)(?))
-	- oh wait, ed is the standard text editor. never mind.
+	- **`vi`**
+	- <s> a custom editor</s>
+	- <s>oh wait, ed is the standard text editor. never mind.</s>
+- `man`
 - tiny fetch script
 	- **a slightly modified version of
 	[golfetch](https://github.com/dylanaraps/golfetch)
