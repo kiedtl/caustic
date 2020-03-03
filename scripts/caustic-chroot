@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the LICENSE for copyright information.
+
+# usage: caustic-chroot [shell]
+# default shell is /bin/sh.
+
+# TODO: mount /proc and /sys
+
+chroot root /bin/sh
