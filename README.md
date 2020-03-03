@@ -14,7 +14,7 @@ damage if used without proper equipment and expertise.
 - [x] planning phase
 - [ ] working `chroot`
 	- [ ] `musl` (IN PROGRESS)
-	- [ ] shell
+	- [ ] shell  (IN PROGRESS)
 	- [ ] coreutils
 	- [ ] fetch script
 	- [ ] core filesystem
@@ -33,8 +33,9 @@ possible:
 	- [hummingbird](https://github.com/Sweets/hummingbird), or
 	- `systemd`. After all, it's only 16MB, and it has service supervision, and...
 - a shell
-	- either `dash` or `ash`(?)
-	- why not a custom shell? :)
+	- <s>dash, maybe</s>
+	- the `ash` shell. We're using busybox anyway...
+	- <s>why not a custom shell? :)</s>
 - `musl` libc
 - basic set of coreutils
 	- stripped down busybox (or sbase)
