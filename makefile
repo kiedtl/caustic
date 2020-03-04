@@ -1,4 +1,5 @@
-ROOTDIR		= root
+PROJDIR		= $(shell pwd)
+CHROOTDIR	= root
 
 COREFS_URL	= https://github.com/kiedtl/caustic-corefs/archive/0.1.0.tar.gz
 MRSH_URL	= git://github.com/emersion/mrsh
@@ -13,17 +14,17 @@ options:
 	@echo Run \`make chroot\` to build the core packages and create the
 	@echo root directories, which you can then chroot into.
 
-chroot: $(ROOTDIR)
-$(ROOTDIR): build
-	mkdir -p $(ROOTDIR) && \
-		cd $(ROOTDIR) && \
+chroot: $(CHROOTDIR)
+$(CHROOTDIR): build
+	mkdir -p $(CHROOTDIR) && \
+		cd $(CHROOTDIR) && \
 		rm -rf ./* && \
-		tar xvf ../build/corefs/corefs-src/COREFS_BUILD.tar && \
-		tar xvf ../build/mrsh/mrsh-src/MRSH_BUILD.tar && \
-		tar xvf ../build/musl/musl-src/MUSL_BUILD.tar && \
-		tar xvf ../build/sbase/sbase-src/SBASE_BUILD.tar && \
-		tar xvf ../build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
-		tar xvf ../build/ubase/ubase-src/UBASE_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/corefs/corefs-src/COREFS_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/mrsh/mrsh-src/MRSH_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/musl/musl-src/MUSL_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/sbase/sbase-src/SBASE_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/ubase/ubase-src/UBASE_BUILD.tar && \
 		cp -r COREFS_BUILD/* . && rm -rf COREFS_BUILD && \
 		cp -r MRSH_BUILD/* . && rm -rf MRSH_BUILD && \
 		cp -r MUSL_BUILD/* . && rm -rf MUSL_BUILD && \
@@ -88,7 +89,7 @@ build/sbase/sbase-src/SBASE_BUILD.tar: build/sbase/config.mk
 	cd build/sbase && \
 		git clone --depth=1 $(SBASE_URL) sbase-src && \
 		cd sbase-src && \
-		cp -f ../config.mk . && \
+		cp -f $(PROJDIR)/build/sbase/config.mk . && \
 		mkdir -p SBASE_BUILD && \
 		make DESTDIR=SBASE_BUILD sbase-box-install && \
 		tar -cf SBASE_BUILD.tar SBASE_BUILD
@@ -97,9 +98,9 @@ build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk
 	cd build/ubase && \
 		git clone --depth=1 $(UBASE_URL) ubase-src && \
 		cd ubase-src && \
-		cp -f ../config.mk . && \
+		cp -f $(PROJDIR)/build/ubase/config.mk . && \
 		mkdir -p UBASE_BUILD && \
-		../fixhdr && \
+		$(PROJDIR)/build/ubase/fixhdr && \
 		make DESTDIR=UBASE_BUILD ubase-box-install && \
 		tar -cf UBASE_BUILD.tar UBASE_BUILD
 
@@ -111,4 +112,4 @@ clean:
 	rm -rf build/sysinfo/sysinfo-src
 	rm -rf build/ubase/ubase-src
 
-.PHONY: all chroot build clean
+.PHONY: all chroot $(CHROOTDIR) build clean
