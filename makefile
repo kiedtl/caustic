@@ -49,17 +49,8 @@ build/corefs/corefs-src/COREFS_BUILD.tar:
 		make DESTDIR=COREFS_BUILD install && \
 		tar -cf COREFS_BUILD.tar COREFS_BUILD
 
-build/mrsh/mrsh-src/MRSH_BUILD.tar:
-	cd build/mrsh && \
-		git clone --depth=1 $(MRSH_URL) mrsh-src && \
-		cd mrsh-src && \
-		mkdir -p MRSH_BUILD && \
-		./configure --prefix=/usr && \
-		make CFLAGS="-Os -s" && \
-		make DESTDIR=MRSH_BUILD install && \
-		strip MRSH_BUILD/usr/bin/mrsh && \
-		rm -rf MRSH_BUILD/usr/include MRSH_BUILD/usr/lib && \
-		tar -cf MRSH_BUILD.tar MRSH_BUILD
+build/mrsh/mrsh-src/MRSH_BUILD.tar: build/mrsh/makefile
+	cd build/mrsh && make all
 
 
 build/musl/musl-src/MUSL_BUILD.tar:
