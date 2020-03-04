@@ -13,7 +13,7 @@ options:
 
 root: build
 	rm -rf root && \
-		mkdir root && \
+		mkdir -p root && \
 		cd root && \
 		tar xvf ../build/corefs/corefs-src/COREFS_BUILD.tar && \
 		tar xvf ../build/mrsh/mrsh-src/MRSH_BUILD.tar && \
