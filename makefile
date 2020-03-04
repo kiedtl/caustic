@@ -33,26 +33,26 @@ build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/ubase/ubase-src/UBASE_BUILD.tar
 
 build/corefs/corefs-src/COREFS_BUILD.tar: build/corefs/makefile
-	cd build/corefs && make clean all
+	cd build/corefs && make all
 
 build/mrsh/mrsh-src/MRSH_BUILD.tar: build/mrsh/makefile
-	cd build/mrsh && make clean all
+	cd build/mrsh && make all
 
 
 build/musl/musl-src/MUSL_BUILD.tar: build/musl/makefile
-	cd build/musl && make clean all
+	cd build/musl && make all
 
 build/sbase/sbase-src/SBASE_BUILD.tar: build/sbase/config.mk \
 		build/sbase/makefile
-	cd build/sbase && make clean all
+	cd build/sbase && make all
 
 build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar: build/sysinfo/makefile
-	cd build/sysinfo && make clean all
+	cd build/sysinfo && make all
 
 build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk \
 		build/ubase/makefile \
 		build/ubase/fixhdr
-	cd build/ubase/ && make clean all
+	cd build/ubase/ && make all
 
 clean:
 	cd build/corefs && make clean
