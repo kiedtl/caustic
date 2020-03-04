@@ -17,17 +17,20 @@ $(CHROOTDIR): build
 		tar xvf $(PROJDIR)/build/sbase/sbase-src/SBASE_BUILD.tar && \
 		tar xvf $(PROJDIR)/build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
 		tar xvf $(PROJDIR)/build/ubase/ubase-src/UBASE_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/vi/vi-src/VI_BUILD.tar && \
 		cp -r COREFS_BUILD/* . && rm -rf COREFS_BUILD && \
 		cp -r LOKSH_BUILD/* . && rm -rf LOKSH_BUILD && \
 		cp -r SBASE_BUILD/* . && rm -rf SBASE_BUILD && \
 		cp -r SYSINFO_BUILD/* . && rm -rf SYSINFO_BUILD && \
-		cp -r UBASE_BUILD/* . && rm -rf UBASE_BUILD
+		cp -r UBASE_BUILD/* . && rm -rf UBASE_BUILD && \
+		cp -r VI_BUILD/* . && rm -rf VI_BUILD
 
 build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/loksh/loksh-src/LOKSH_BUILD.tar \
 	build/sbase/sbase-src/SBASE_BUILD.tar \
 	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar \
-	build/ubase/ubase-src/UBASE_BUILD.tar
+	build/ubase/ubase-src/UBASE_BUILD.tar \
+	build/vi/vi-src/VI_BUILD.tar
 
 build/corefs/corefs-src/COREFS_BUILD.tar: build/corefs/makefile
 	cd build/corefs && make all
@@ -51,12 +54,15 @@ build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk \
 		build/ubase/fixhdr
 	cd build/ubase/ && make all
 
+build/vi/vi-src/VI_BUILD.tar: build/vi/makefile
+	cd build/vi/ && make all
+
 clean:
 	cd build/corefs && make clean
-	cd build/mrsh && make clean all
-	cd build/musl && make clean all
-	cd build/sysinfo && make clean all
-	cd build/sbase && make clean all
-	cd build/ubase && make clean all
+	cd build/loksh && make clean
+	cd build/sysinfo && make clean
+	cd build/sbase && make clean
+	cd build/ubase && make clean
+	cd build/vi && make clean
 
 .PHONY: all chroot $(CHROOTDIR) build clean
