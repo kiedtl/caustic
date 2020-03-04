@@ -13,21 +13,18 @@ $(CHROOTDIR): build
 		cd $(CHROOTDIR) && \
 		rm -rf ./* && \
 		tar xvf $(PROJDIR)/build/corefs/corefs-src/COREFS_BUILD.tar && \
-		tar xvf $(PROJDIR)/build/mrsh/mrsh-src/MRSH_BUILD.tar && \
-		tar xvf $(PROJDIR)/build/musl/musl-src/MUSL_BUILD.tar && \
+		tar xvf $(PROJDIR)/build/loksh/loksh-src/LOKSH_BUILD.tar && \
 		tar xvf $(PROJDIR)/build/sbase/sbase-src/SBASE_BUILD.tar && \
 		tar xvf $(PROJDIR)/build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar && \
 		tar xvf $(PROJDIR)/build/ubase/ubase-src/UBASE_BUILD.tar && \
 		cp -r COREFS_BUILD/* . && rm -rf COREFS_BUILD && \
-		cp -r MRSH_BUILD/* . && rm -rf MRSH_BUILD && \
-		cp -r MUSL_BUILD/* . && rm -rf MUSL_BUILD && \
+		cp -r LOKSH_BUILD/* . && rm -rf LOKSH_BUILD && \
 		cp -r SBASE_BUILD/* . && rm -rf SBASE_BUILD && \
 		cp -r SYSINFO_BUILD/* . && rm -rf SYSINFO_BUILD && \
 		cp -r UBASE_BUILD/* . && rm -rf UBASE_BUILD
 
 build:  build/corefs/corefs-src/COREFS_BUILD.tar \
-	build/mrsh/mrsh-src/MRSH_BUILD.tar \
-	build/musl/musl-src/MUSL_BUILD.tar \
+	build/loksh/loksh-src/LOKSH_BUILD.tar \
 	build/sbase/sbase-src/SBASE_BUILD.tar \
 	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar \
 	build/ubase/ubase-src/UBASE_BUILD.tar
@@ -35,8 +32,8 @@ build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 build/corefs/corefs-src/COREFS_BUILD.tar: build/corefs/makefile
 	cd build/corefs && make all
 
-build/mrsh/mrsh-src/MRSH_BUILD.tar: build/mrsh/makefile
-	cd build/mrsh && make all
+build/loksh/loksh-src/LOKSH_BUILD.tar: build/loksh/makefile
+	cd build/loksh && make all
 
 
 build/musl/musl-src/MUSL_BUILD.tar: build/musl/makefile

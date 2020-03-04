@@ -1,4 +1,4 @@
-UBASE_URL = git://git.suckless.org/sbase
+UBASE_URL = git://git.suckless.org/ubase
 
 all: ubase-src/UBASE_BUILD.tar
 
