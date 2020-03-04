@@ -1,13 +1,6 @@
 PROJDIR		= $(shell pwd)
 CHROOTDIR	= root
 
-COREFS_URL	= https://github.com/kiedtl/caustic-corefs/archive/0.1.0.tar.gz
-MRSH_URL	= git://github.com/emersion/mrsh
-MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
-SBASE_URL	= git://git.suckless.org/sbase
-SYSINFO_URL	= https://github.com/kiedtl/caustic-sysinfo/archive/0.1.0.tar.gz
-UBASE_URL	= git://git.suckless.org/ubase
-
 all: options
 
 options:
@@ -39,68 +32,34 @@ build:  build/corefs/corefs-src/COREFS_BUILD.tar \
 	build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar \
 	build/ubase/ubase-src/UBASE_BUILD.tar
 
-build/corefs/corefs-src/COREFS_BUILD.tar:
-	cd build/corefs && \
-		wget $(COREFS_URL) -O corefs.tar.gz && \
-		tar -xf corefs.tar.gz && \
-		mv caustic-corefs-0.1.0 corefs-src && \
-		cd corefs-src && \
-		mkdir -p COREFS_BUILD && \
-		make DESTDIR=COREFS_BUILD install && \
-		tar -cf COREFS_BUILD.tar COREFS_BUILD
+build/corefs/corefs-src/COREFS_BUILD.tar: build/corefs/makefile
+	cd build/corefs && make clean all
 
 build/mrsh/mrsh-src/MRSH_BUILD.tar: build/mrsh/makefile
-	cd build/mrsh && make all
+	cd build/mrsh && make clean all
 
 
-build/musl/musl-src/MUSL_BUILD.tar:
-	cd build/musl && \
-		wget $(MUSL_URL) -O musl.tar.gz && \
-		tar -xf musl.tar.gz && \
-		mv musl-1.2.0 musl-src && \
-		cd musl-src && \
-		mkdir -p MUSL_BUILD && \
-		./configure --prefix /usr --syslibdir /usr/lib && \
-		make && \
-		make DESTDIR=MUSL_BUILD install && \
-		mkdir -p MUSL_BUILD/usr/bin \
-		tar -cf MUSL_BUILD.tar MUSL_BUILD
+build/musl/musl-src/MUSL_BUILD.tar: build/musl/makefile
+	cd build/musl && make clean all
 
-build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar:
-	cd build/sysinfo && \
-		wget $(SYSINFO_URL) -O sysinfo.tar.gz && \
-		tar -xf sysinfo.tar.gz && \
-		mv caustic-sysinfo-0.1.0 sysinfo-src && \
-		cd sysinfo-src && \
-		mkdir -p SYSINFO_BUILD && \
-		make DESTDIR=SYSINFO_BUILD install && \
-		tar -cf SYSINFO_BUILD.tar SYSINFO_BUILD
+build/sbase/sbase-src/SBASE_BUILD.tar: build/sbase/config.mk \
+		build/sbase/makefile
+	cd build/sbase && make clean all
 
-build/sbase/sbase-src/SBASE_BUILD.tar: build/sbase/config.mk
-	cd build/sbase && \
-		git clone --depth=1 $(SBASE_URL) sbase-src && \
-		cd sbase-src && \
-		cp -f $(PROJDIR)/build/sbase/config.mk . && \
-		mkdir -p SBASE_BUILD && \
-		make DESTDIR=SBASE_BUILD sbase-box-install && \
-		tar -cf SBASE_BUILD.tar SBASE_BUILD
+build/sysinfo/sysinfo-src/SYSINFO_BUILD.tar: build/sysinfo/makefile
+	cd build/sysinfo && make clean all
 
-build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk
-	cd build/ubase && \
-		git clone --depth=1 $(UBASE_URL) ubase-src && \
-		cd ubase-src && \
-		cp -f $(PROJDIR)/build/ubase/config.mk . && \
-		mkdir -p UBASE_BUILD && \
-		$(PROJDIR)/build/ubase/fixhdr && \
-		make DESTDIR=UBASE_BUILD ubase-box-install && \
-		tar -cf UBASE_BUILD.tar UBASE_BUILD
+build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk \
+		build/ubase/makefile \
+		build/ubase/fixhdr
+	cd build/ubase/ && make clean all
 
 clean:
-	# TODO: remote *.tar.gz
-	rm -rf build/corefs/corefs-src
-	rm -rf build/musl/musl-src
-	rm -rf build/sbase/sbase-src
-	rm -rf build/sysinfo/sysinfo-src
-	rm -rf build/ubase/ubase-src
+	cd build/corefs && make clean
+	cd build/mrsh && make clean all
+	cd build/musl && make clean all
+	cd build/sysinfo && make clean all
+	cd build/sbase && make clean all
+	cd build/ubase && make clean all
 
 .PHONY: all chroot $(CHROOTDIR) build clean
