@@ -18,7 +18,7 @@ loksh-src/LOKSH_BUILD.tar:
 		make DESTDIR=LOKSH_BUILD \
 			PREFIX='' install && \
 		mkdir -p LOKSH_BUILD/bin && \
-		ln -s /usr/bin/ksh LOKSH_BUILD/bin/sh && \
+		ln -s /bin/ksh LOKSH_BUILD/bin/sh && \
 		tar -cf LOKSH_BUILD.tar LOKSH_BUILD
 
 clean:
