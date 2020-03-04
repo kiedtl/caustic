@@ -8,7 +8,7 @@ sysinfo-src/SYSINFO_BUILD.tar:
 		mv caustic-sysinfo-0.2.0 sysinfo-src && \
 		cd sysinfo-src && \
 		mkdir -p SYSINFO_BUILD && \
-		make DESTDIR=SYSINFO_BUILD install && \
+		make PREFIX='' DESTDIR=SYSINFO_BUILD install && \
 		tar -cf SYSINFO_BUILD.tar SYSINFO_BUILD
 
 clean:
