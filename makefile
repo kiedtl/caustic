@@ -1,3 +1,5 @@
+ROOTDIR		= root
+
 COREFS_URL	= https://github.com/kiedtl/caustic-corefs/archive/0.1.0.tar.gz
 MRSH_URL	= git://github.com/emersion/mrsh
 MUSL_URL	= https://musl.libc.org/releases/musl-1.2.0.tar.gz
@@ -11,9 +13,9 @@ options:
 	@echo Run \`make root\` to build the core packages and create the
 	@echo root directories, which you can then chroot into.
 
-root: build
-	mkdir -p root && \
-		cd root && \
+$(ROOTDIR): build
+	mkdir -p $(ROOTDIR) && \
+		cd $(ROOTDIR) && \
 		rm -rf ./* && \
 		tar xvf ../build/corefs/corefs-src/COREFS_BUILD.tar && \
 		tar xvf ../build/mrsh/mrsh-src/MRSH_BUILD.tar && \
