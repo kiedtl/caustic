@@ -18,7 +18,7 @@ damage if used without proper equipment and expertise.
 		- [x] coreutils (sbase + ubase)
 		- [x] fetch script
 		- [x] core filesystem
-		- [ ] editor (`vi`)
+		- [x] editor (`vi`)
 		- [ ] the `man` utility
 	- [ ] working boot (*on `x86_64`*)
 		- [ ] kernel
