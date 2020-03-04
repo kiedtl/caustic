@@ -63,6 +63,30 @@ possible:
 	- no unicorns or rainbows.
 	- etc etc etc
 
+### Build
+
+You will need:
+- GNU Make (bmake is untested...)
+- POSIX-compatible `/bin/sh`
+- `wget`
+- `git`
+- `tar`
+- `find` and `xargs`
+... in addition to a C99 compiler and the rest of the components needed to
+build the kernel, `musl`, sbase, ubase, and mrsh. Please refer to those
+project's documentation to ensure you have them all installed.
+
+Then, retrieve the repository source via either `git` and `wget` and run:
+
+```
+$ make build
+$ make root
+```
+
+This will create a `chroot`-able directory in `./root`. You may then use the
+`scripts/caustic-chroot` script to `chroot` into the directory and run
+`du -sh`.
+
 ### FAQ
 
 - **Q**: Why are the manpages included for sbase/ubase? Won't that increase the size significantly?
