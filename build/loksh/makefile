@@ -15,7 +15,8 @@ loksh-src/LOKSH_BUILD.tar:
 			CFLAGS="-Os -s" \
 			LDFLAGS=-static \
 			NCURSES_LDFLAGS=-lncurses && \
-		make DESTDIR=LOKSH_BUILD install && \
+		make DESTDIR=LOKSH_BUILD \
+			PREFIX='' install && \
 		mkdir -p LOKSH_BUILD/bin && \
 		ln -s /usr/bin/ksh LOKSH_BUILD/bin/sh && \
 		tar -cf LOKSH_BUILD.tar LOKSH_BUILD
