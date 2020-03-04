@@ -10,9 +10,10 @@ UBASE_URL	= git://git.suckless.org/ubase
 all: options
 
 options:
-	@echo Run \`make root\` to build the core packages and create the
+	@echo Run \`make chroot\` to build the core packages and create the
 	@echo root directories, which you can then chroot into.
 
+chroot: $(ROOTDIR)
 $(ROOTDIR): build
 	mkdir -p $(ROOTDIR) && \
 		cd $(ROOTDIR) && \
@@ -110,4 +111,4 @@ clean:
 	rm -rf build/sysinfo/sysinfo-src
 	rm -rf build/ubase/ubase-src
 
-.PHONY: all build clean
+.PHONY: all chroot build clean

@@ -80,7 +80,7 @@ Then, retrieve the repository source via either `git` and `wget` and run:
 
 ```
 $ make build
-$ make root
+$ make chroot
 ```
 
 This will create a `chroot`-able directory in `./root`. You may then use the
