@@ -12,9 +12,9 @@ options:
 	@echo root directories, which you can then chroot into.
 
 root: build
-	rm -rf root && \
-		mkdir -p root && \
+	mkdir -p root && \
 		cd root && \
+		rm -rf ./* && \
 		tar xvf ../build/corefs/corefs-src/COREFS_BUILD.tar && \
 		tar xvf ../build/mrsh/mrsh-src/MRSH_BUILD.tar && \
 		tar xvf ../build/musl/musl-src/MUSL_BUILD.tar && \
