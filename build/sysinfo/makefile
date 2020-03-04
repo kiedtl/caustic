@@ -2,9 +2,11 @@ SYSINFO_URL = https://github.com/kiedtl/caustic-sysinfo/archive/0.2.0.tar.gz
 
 all: sysinfo-src/SYSINFO_BUILD.tar
 
-sysinfo-src/SYSINFO_BUILD.tar:
-	wget $(SYSINFO_URL) -O sysinfo.tar.gz && \
-		tar -xf sysinfo.tar.gz && \
+sysinfo.tar.gz:
+	wget $(SYSINFO_URL) -O sysinfo.tar.gz
+
+sysinfo-src/SYSINFO_BUILD.tar: sysinfo.tar.gz
+	tar -xf sysinfo.tar.gz && \
 		mv caustic-sysinfo-0.2.0 sysinfo-src && \
 		cd sysinfo-src && \
 		mkdir -p SYSINFO_BUILD && \
