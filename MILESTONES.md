@@ -16,3 +16,4 @@ The size of the chroot was measured with
 | 2020-03-04 | enable static linking && remove musl     | 1.92 MiB       |
 | 2020-03-04 | add `vi` editor                          | 2.47 MiB       |
 | 2020-03-05 | remove man pages and documentation       | 1.54 MiB       |
+| 2020-03-05 | strip all ELF binaries in `/bin`         | 1.46 MiB       |
