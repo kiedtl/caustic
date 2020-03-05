@@ -4,8 +4,12 @@ CHROOTDIR	= root
 all: options
 
 options:
+	@echo
 	@echo Run \`make chroot\` to build the core packages and create the
 	@echo root directories, which you can then chroot into.
+	@echo
+	@echo You can then run \`make minify\` to minify the chroot.
+	@echo
 
 chroot: $(CHROOTDIR)
 $(CHROOTDIR): build
@@ -57,6 +61,10 @@ build/ubase/ubase-src/UBASE_BUILD.tar: build/ubase/config.mk \
 build/vi/vi-src/VI_BUILD.tar: build/vi/makefile
 	cd build/vi/ && make all
 
+minify:
+	@echo removing man pages and docs
+	scripts/kill-man $(CHROOTDIR)
+
 clean:
 	cd build/corefs && make clean
 	cd build/loksh && make clean
@@ -65,4 +73,4 @@ clean:
 	cd build/ubase && make clean
 	cd build/vi && make clean
 
-.PHONY: all chroot $(CHROOTDIR) build clean
+.PHONY: all chroot $(CHROOTDIR) build minify clean
