@@ -7,5 +7,10 @@
 
 [ -d "$1" ] || exit 1
 
-find ${1} -type f -name "*.1" -print0 | xargs -0 rm -f
-rm -rf share/man share/doc
+for file in $(find ${1} -type f -name "*.1")
+do
+    echo "-> removing file '${file}'"
+    rm -f "$file"
+done
+
+rm -rf "$1/share/man" "$1/share/doc"
