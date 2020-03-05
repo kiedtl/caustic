@@ -64,6 +64,7 @@ build/vi/vi-src/VI_BUILD.tar: build/vi/makefile
 minify:
 	@echo removing man pages and docs
 	scripts/kill-man $(CHROOTDIR)
+	scripts/strip-bin $(CHROOTDIR)
 
 clean:
 	cd build/corefs && make clean

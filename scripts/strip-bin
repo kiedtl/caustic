@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# strip-bin: minify executables
+#
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the LICENSE for copyright information.
+
+[ -d "$1" ] || exit 1
+
+for file in $(find "$1" -type f -perm 755)
+do
+    echo "-> stripping '$file'"
+
+    # ||: is there just in case
+    # binary is a shell script
+    strip --strip-all "$file" 2>/dev/null ||:
+done
